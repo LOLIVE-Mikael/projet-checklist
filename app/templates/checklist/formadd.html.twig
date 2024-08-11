@@ -1,0 +1,11 @@
+{# checklist/formadd.html.twig #}
+
+{{ form_start(formadd, {'action': path('checklist_add_task'), 'attr': {'id': 'form-add-task' }}) }}
+	{{ form_row(formadd.task) }}
+	{{ form_row(formadd.title) }}
+	{{ form_row(formadd.duration) }}
+	{{ form_row(formadd.submit, {'attr': {'class': 'formadd_submit'}}) }}
+
+	{{ form_row(formadd.checklist_id) }}
+
+{{ form_end(formadd) }}

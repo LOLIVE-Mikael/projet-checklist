@@ -1,0 +1,17 @@
+{# checklist/tasks.html.twig #}
+
+<h2>Liste des taches :</h2>
+<ul id="ul-task-list">	
+{% for task in tasks %}
+
+	{% include 'checklist/task.html.twig' with { 'task': task } %}
+
+{% endfor %}
+</ul>
+<div id="duration_checklist">	
+	{% include 'checklist/duration.html.twig' with { 'checklist': checklist } %}
+</div>
+
+{% if formadd  is not null %}
+	{% include 'checklist/formadd.html.twig' with { 'formadd': formadd } %}
+{% endif %}

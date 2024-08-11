@@ -1,0 +1,12 @@
+{# checklist/duration.html.twig #}
+
+{% if checklist is defined and checklist%}
+	{% if checklist.duration.h >= 7 %}
+		{# Appliquer une classe CSS pour changer la couleur du texte en rouge #}
+		<span style="color: red;">Durée : {{ checklist.duration.h }} H {{ checklist.duration.i }} min</span>
+	{% else %}
+		{# Afficher la durée normalement #}
+		Durée : {{ checklist.duration.h }} H {{ checklist.duration.i }} min
+	{% endif %}
+	<div id="checklist_duration" style="display: none;">{{ checklist.duration.h }}</div>
+{% endif %}

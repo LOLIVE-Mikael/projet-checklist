@@ -1,0 +1,7 @@
+{{ form_start(form, {'action': path('task_handle', {'taskId': taskId}), 'attr': {'id': 'form_task_' ~ taskId, 'class': 'form-modification'}}) }}
+	{{ form_row(form.title) }}
+	{{ form_row(form.duration) }}
+    {{ form_row(form.update, {'attr': {'class': 'update_button'}}) }}
+    {{ form_row(form.delete, {'attr': {'class': 'delete_button'}}) }}
+{{ form_end(form) }}
+<p id="separator_{{taskId}}">====================================================</p>

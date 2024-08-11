@@ -1,0 +1,9 @@
+{# checklist/task.html.twig #}
+<li id="task-{{ task.id }}"><div>
+	{{ task.title }}
+	Durée : {{ task.duration.h }} H {{ task.duration.i }} min.
+
+	<form method="post" action="{{ path('checklist_remove_task', {'taskId': task.id, 'checklistId': checklist.id}) }}"  id="form-task-{{ task.id }}">
+		<button class="dissociate-button" data-task-id="{{ task.id }}" type="submit">Dissocier</button>
+	</form>
+</div></li>

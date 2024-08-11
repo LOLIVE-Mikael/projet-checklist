@@ -1,0 +1,50 @@
+{# checklist/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('checklist') }}
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+
+<div class="example-wrapper">
+
+    {# Formulaire de sélection / suppression checklist #}
+
+
+    {{ form_start(form, {'action': path('checklist_handle'), 'attr': {'id': 'form-select-checklist' }}) }}
+        {{ form_row(form.checklist) }}
+        {{ form_row(form.select) }}
+        {{ form_row(form.delete) }}
+	{{ form_end(form) }}
+
+    {# Formulaire d'ajout de checklist #}
+
+    {{ form_start(formnew, {'action': path('checklist_ajout_checklist'), 'attr': {'id': 'form-ajout-checklist' }}) }}
+        {{ form_row(formnew.title) }}
+        {{ form_row(formnew.creer) }}
+	{{ form_end(formnew) }}
+
+    {# Afficher les erreurs globales du formulaire #}
+    {% for error in form.vars.errors %}
+        <div class="alert alert-danger">
+            {{ error.message }}
+        </div>
+    {% endfor %}
+
+	<div id="task-list">
+	{% if (tasks is defined and tasks is not empty) or  formadd  is not null %}
+		{% include 'checklist/tasks.html.twig' with { 'tasks': tasks, 'checklist':checklist } %}
+	{% endif %}
+	</div>
+	
+</div>
+{% endblock %}

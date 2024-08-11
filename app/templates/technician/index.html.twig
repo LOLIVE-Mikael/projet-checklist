@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+
+    {{ form_start(form, {'action': path('technician_selection_checklist'), 'attr': {'id': 'form-select-visite' }}) }}
+    {{ form_end(form) }}
+    {% if tasks is defined and tasks is not empty %}
+        <h2>Taches à effectuer : </h2>
+        <ul id="ul-task-list">
+            {% for task in tasks %}
+                <li> <input type="checkbox" id="customCheckbox" name="customCheckbox"> {{ task.title }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

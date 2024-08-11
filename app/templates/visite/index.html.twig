@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('visite') }}
+{% endblock %}
+
+{% block title %}Visite List{% endblock %}
+
+{% block content %}
+	<div id="visite-list">
+    {% for visiteId, form in editForms %}
+		{% include 'visite/formvisite.html.twig' with { 'form': form, 'visiteId': visiteId } %}
+    {% endfor %}
+	</div>
+	
+	<p>Nouvelle visite : </p>
+	
+	
+	{{ form_start(newVisiteForm, {'action': path('visites_new'), 'attr': {'id': 'new_visite'}}) }}
+        {{ form_row(newVisiteForm.date) }}
+		{{ form_row(newVisiteForm.site) }}
+		{{ form_row(newVisiteForm.user) }}
+		{{ form_row(newVisiteForm.checklist) }}
+		{{ form_row(newVisiteForm.save, {'attr': {'id': 'save_button'}}) }}
+    {{ form_end(newVisiteForm) }}
+
+{% endblock %}

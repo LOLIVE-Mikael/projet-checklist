@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jquery.com https://ga.jspm.io blob: data:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+
+    {# Viewport for responsive design #}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+   {#        {% block importmap %}{{ importmap('app') }}{% endblock %} #}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+        {# Include flash messages #}
+        <div class="container">
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div  class="flash-{{ type }}" style="
+                        padding: 15px;
+                        margin-bottom: 20px;
+                        border: 1px solid transparent;
+                        border-radius: 4px;
+                        {% if type == 'success' %}
+                            color: #155724;
+                            background-color: #d4edda;
+                            border-color: #c3e6cb;
+                        {% elseif type == 'error' %}
+                            color: #721c24;
+                            background-color: #f8d7da;
+                            border-color: #f5c6cb;
+                        {% elseif type == 'warning' %}
+                            color: #856404;
+                            background-color: #fff3cd;
+                            border-color: #ffeeba;
+                        {% elseif type == 'info' %}
+                            color: #0c5460;
+                            background-color: #d1ecf1;
+                            border-color: #bee5eb;
+                        {% endif %}
+                    ">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endblock %}
+    {% block content %}{% endblock %}
+</body>
+</html>

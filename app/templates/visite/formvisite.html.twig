@@ -1,0 +1,10 @@
+    {{ form_start(form, {'action': path('visite_handle', {'visiteId': visiteId}), 'attr': {'id': 'form_visite_' ~ visiteId, 'class': 'form-modification'}}) }}
+        {{ form_row(form.date) }}
+		{{ form_row(form.site) }}
+		{{ form_row(form.user) }}
+		{{ form_row(form.checklist) }}
+        {{ form_row(form.update, {'attr': {'class': 'update_button'}}) }}
+        {{ form_row(form.delete, {'attr': {'class': 'delete_button'}}) }}
+
+    {{ form_end(form) }}
+            <p id="separator_{{visiteId}}">====================================================</p>
